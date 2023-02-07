@@ -4,7 +4,6 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/emmohac/go-learnit/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,15 +14,6 @@ func checkErr(err error) {
 }
 
 func GetUsers(c *gin.Context) {
-	users, err := models.GetPersons(10)
-	checkErr(err)
-
-	if users == nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
-		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"data": users})
-	}
 	c.JSON(http.StatusOK, gin.H{"message": "getUser called"})
 }
 
