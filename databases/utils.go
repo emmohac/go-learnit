@@ -2,18 +2,17 @@ package databases
 
 import (
 	"database/sql"
-
-	_ "github.com/mattn/go-sqlite3"
+	"fmt"
 )
 
 var DB *sql.DB
 
-func ConnectDatabase() error {
-	db, err := sql.Open("sqlite3", "../names.db")
-	if err != nil {
-		return err
-	}
+func Connect() error {
+	fmt.Println(("Database connected"))
+	return nil
+}
 
-	DB = db
+func Init() error {
+	fmt.Println("Database initialized")
 	return nil
 }

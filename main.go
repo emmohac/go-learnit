@@ -1,13 +1,24 @@
 package main
 
 import (
+	"net/http"
+
+	db "github.com/emmohac/go-learnit/databases"
 	UserService "github.com/emmohac/go-learnit/services/users"
 	"github.com/gin-gonic/gin"
 )
 
+func Pong(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "Pong"})
+}
+
 func main() {
 	router := gin.Default()
 	v1 := router.Group("/api/v1")
+	v1.GET("/ping", Pong)
+
+	db.Connect()
+	db.Init()
 
 	{
 		v1.GET("users", UserService.GetUsers)

@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  server:
+    container_name: go-learnit-app
+    image: "golang:1.19"
+    build: .
+    restart: on-failure
+    ports:
+      - "3000:8080"
+  postgres:
+    restart: on-failure
+    image: "postgres:14"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
+    driver: local

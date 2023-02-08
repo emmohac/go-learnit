@@ -1,11 +1,11 @@
-FROM golang:latest
+FROM golang:1.19
 
-RUN mkdir /app
+RUN mkdir -p /app
 
-Copy . /app/
+COPY . /app/
 
 WORKDIR /app
 
-Run go build -o main .
+RUN go build -o main .
 
 CMD ["/app/main"]
