@@ -2,8 +2,9 @@ version: "3.9"
 
 services:
   server:
-    container_name: go-learnit-app
     image: "golang:1.19"
+    depends_on:
+      - postgres
     build: .
     restart: on-failure
     ports:

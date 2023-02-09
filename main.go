@@ -17,8 +17,8 @@ func main() {
 	v1 := router.Group("/api/v1")
 	v1.GET("/ping", Pong)
 
-	db.Connect()
-	db.Init()
+	database, _ := db.Connect()
+	db.Init(database)
 
 	{
 		v1.GET("users", UserService.GetUsers)
